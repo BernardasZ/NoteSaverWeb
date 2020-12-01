@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteSaverWeb", "src\NoteSaverWeb\NoteSaverWeb.csproj", "{D25D9C1D-011A-4072-9B5B-9CCDFA716838}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseModel", "src\DataBaseModel\DataBaseModel.csproj", "{93340573-F477-4E4C-99B9-502B1D788F01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D25D9C1D-011A-4072-9B5B-9CCDFA716838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D25D9C1D-011A-4072-9B5B-9CCDFA716838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D25D9C1D-011A-4072-9B5B-9CCDFA716838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D25D9C1D-011A-4072-9B5B-9CCDFA716838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93340573-F477-4E4C-99B9-502B1D788F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93340573-F477-4E4C-99B9-502B1D788F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93340573-F477-4E4C-99B9-502B1D788F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93340573-F477-4E4C-99B9-502B1D788F01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51357F03-7541-40FD-86A1-DB34E9A6843F}
+	EndGlobalSection
+EndGlobal

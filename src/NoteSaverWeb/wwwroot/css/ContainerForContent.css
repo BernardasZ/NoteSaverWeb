@@ -1,0 +1,21 @@
+﻿div .-contentInline1 {
+    display: inline;
+    /*float: left;*/
+    width: 25%;
+    margin-left:5%;
+}
+
+div .contentInline2 {
+    display: inline;
+    float: left;
+    width: 75%;
+}
+
+.-contentBlocks {
+    display: block;
+}
+
+.ck-editor__editable {
+    min-height: calc(100vh - 15rem);
+    max-height: calc(100vh - 15rem);
+}

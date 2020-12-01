@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Product>NoteSaver</Product>
+    <Company>NoteSaver</Company>
+    <Authors>NoteSaver</Authors>
+    <PackageId>NoteSaver</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\ckeditor5-build-classic\**" />
+    <Content Remove="wwwroot\ckeditor5-build-classic\**" />
+    <EmbeddedResource Remove="wwwroot\ckeditor5-build-classic\**" />
+    <None Remove="wwwroot\ckeditor5-build-classic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseModel\DataBaseModel.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Note Saver</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/ContainerForContent.css" />
+    <link rel="stylesheet" type="text/css" href="aimaraJS-master/css/Aimara.css">
+    <script src="aimaraJS-master/lib/Aimara.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            //Tree Context Menu Structure
+            var contex_menu = {
+                'context1': {
+                    elements: [
+                        {
+                            text: 'Node Actions',
+                            icon: 'aimaraJS-master/images/blue_key.png',
+                            action: function (node) {
+
+                            },
+                            submenu: {
+                                elements: [
+                                    {
+                                        text: 'Toggle Node',
+                                        icon: 'aimaraJS-master/images/leaf.png',
+                                        action: function (node) {
+                                            node.toggleNode();
+                                        }
+                                    },
+                                    {
+                                        text: 'Expand Node',
+                                        icon: 'aimaraJS-master/images/leaf.png',
+                                        action: function (node) {
+                                            node.expandNode();
+                                        }
+                                    },
+                                    {
+                                        text: 'Collapse Node',
+                                        icon: 'aimaraJS-master/images/leaf.png',
+                                        action: function (node) {
+                                            node.collapseNode();
+                                        }
+                                    },
+                                    {
+                                        text: 'Expand Subtree',
+                                        icon: 'aimaraJS-master/images/tree.png',
+                                        action: function (node) {
+                                            node.expandSubtree();
+                                        }
+                                    },
+                                    {
+                                        text: 'Collapse Subtree',
+                                        icon: 'aimaraJS-master/images/tree.png',
+                                        action: function (node) {
+                                            node.collapseSubtree();
+                                        }
+                                    },
+                                    {
+                                        text: 'Delete Node',
+                                        icon: 'aimaraJS-master/images/delete.png',
+                                        action: function (node) {
+                                            node.removeNode();
+                                        }
+                                    },
+                                ]
+                            }
+                        },
+                        {
+                            text: 'Child Actions',
+                            icon: 'aimaraJS-master/images/blue_key.png',
+                            action: function (node) {
+
+                            },
+                            submenu: {
+                                elements: [
+                                    {
+                                        text: 'Create Child Node',
+                                        icon: 'aimaraJS-master/images/add1.png',
+                                        action: function (node) {
+                                            node.createChildNode('Created', false, 'aimaraJS-master/images/folder.png', null, 'context1');
+                                        }
+                                    },
+                                    {
+                                        text: 'Create 1000 Child Nodes',
+                                        icon: 'aimaraJS-master/images/add1.png',
+                                        action: function (node) {
+                                            for (var i = 0; i < 1000; i++)
+                                                node.createChildNode('Created -' + i, false, 'aimaraJS-master/images/folder.png', null, 'context1');
+                                        }
+                                    },
+                                    {
+                                        text: 'Delete Child Nodes',
+                                        icon: 'aimaraJS-master/images/delete.png',
+                                        action: function (node) {
+                                            node.removeChildNodes();
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+
+            //Creating the tree
+            tree = createTree('div_tree', 'white', contex_menu);
+
+
+            //Loop to create test nodes
+            for (var i = 1; i < 10; i++) {
+                node1 = tree.createNode('Level 0 - Node ' + i, false, 'aimaraJS-master/images/star.png', null, null, 'context1');
+                for (var j = 1; j < 5; j++) {
+                    node2 = node1.createChildNode('Level 1 - Node ' + j, false, 'aimaraJS-master/images/blue_key.png', null, 'context1');
+                    for (var k = 1; k < 5; k++) {
+                        node3 = node2.createChildNode('Level 2 - Node ' + k, false, 'aimaraJS-master/images/monitor.png', null, 'context1');                      
+                    }
+                }
+            }
+
+            //Rendering the tree
+            tree.drawTree();
+        };
+
+        function expand_all() {
+            tree.expandTree();
+        }
+
+        function collapse_all() {
+            tree.collapseTree();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Note Saver</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class=".container-fluid">
+        <main role="main" class="pb-3">
+            <div class="-contentInline1" >
+                <div class="-contentBlocks">
+                    <button onclick="expand_all()" class="ck ck-button ck-off ck-button_with-text">Expand</button>
+                    <button onclick="collapse_all()" class="ck ck-button ck-off ck-button_with-text">Collapse</button>
+                </div>
+                <div id="div_tree" class="-contentBlocks"></div>
+            </div>
+            <div class="-contentInline2">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - Note Saver - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="ckeditor5-build-decoupled-document/ckeditor.js"></script>
+
+    <script>
+        //Editor document component
+        DecoupledEditor
+            .create(document.querySelector('#editor'), {
+                // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+            })
+            .then(editor => {
+                const toolbarContainer = document.querySelector('main .toolbar-container');
+                        editor.config.fullPage = false;
+        editor.config.resize_enabled = false;
+        editor.config.removePlugins = 'resize,autogrow';
+                toolbarContainer.prepend(editor.ui.view.toolbar.element);
+
+                window.editor = editor;
+                editor.setData(document.getElementById('Model.Content').value);
+
+            })
+            .catch(err => {
+                console.error(err.stack);
+            });
+
+
+
+        //Save editor content to model
+        function updateContent() {
+            document.getElementById('Model.Content').value = editor.getData();
+        }
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

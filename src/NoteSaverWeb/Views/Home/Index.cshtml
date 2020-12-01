@@ -1,0 +1,21 @@
+﻿@model EditorViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="document-editor">
+        <div class="toolbar-container"></div>
+        <div class="content-container">
+            <div id="editor">
+            </div>
+        </div>
+
+        @Html.TextBoxFor(model => model.Content, new { @id = "Model.Content", @hidden = "hidden" })
+
+        <input type="submit" name="submit" value="Save" onclick="updateContent()" style="margin-left:25%"/>
+    </div>
+}
